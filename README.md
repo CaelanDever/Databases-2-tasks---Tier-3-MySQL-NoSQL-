@@ -181,6 +181,10 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-6.0.asc
 EOF
+
+<img width="459" alt="gt" src="https://github.com/user-attachments/assets/54cfd86a-2bc5-47de-858b-3ddb29191807">
+
+
 Install MongoDB:
 
 
@@ -200,6 +204,9 @@ Verify MongoDB is running:
 
 sudo systemctl status mongod
 
+<img width="456" alt="wd" src="https://github.com/user-attachments/assets/6ffdea6a-79d0-445d-ac8b-1b90b2adbf0b">
+
+
 3. Access MongoDB Shell
 
 Access the MongoDB shell:
@@ -212,6 +219,9 @@ Create or switch to a new database:
 
 use my_database
 
+<img width="149" alt="xs" src="https://github.com/user-attachments/assets/e119c931-99f0-4147-bd80-4fd6162693d0">
+
+
 5. Define Collections
 
 Create a new collection:
@@ -222,43 +232,16 @@ Alternatively, you can insert documents directly into a collection which will cr
 
 db.employees.insertOne({ name: "Alice", position: "Developer", hire_date: new Date() })
 
-6. Configure Indexes
+<img width="455" alt="89" src="https://github.com/user-attachments/assets/e4d3f62e-b7a7-438b-8432-ee8a89650fc5">
+
+
+# 6. Configure Indexes
 
 Create an index on the name field of the employees collection:
 
 db.employees.createIndex({ name: 1 })
 
-7. Enable Sharding (Optional)
-
-Start a sharding cluster (requires multiple servers; here is an outline):
-
-Initialize the config server (Config Server Replica Set):
-
-mongod --configsvr --replSet rs0 --port 27019 --dbpath /var/lib/mongo/configdb --bind_ip_all
-
-Initialize a shard server:
-
-mongod --shardsvr --port 27018 --dbpath /var/lib/mongo/shard1 --bind_ip_all
-
-Start the mongos router:
-
-mongos --configdb rs0/localhost:27019 --bind_ip_all
-
-Connect to the mongos router and add shards:
-
-use admin
-
-sh.addShard("localhost:27018")
-
-Enable sharding for the database:
-
-sh.enableSharding("my_database")
-
-Shard a collection:
-
-sh.shardCollection("my_database.employees", { name: 1 })
-
-8. Configure Additional Settings
+# 7. Configure Additional Settings
 
 Storage Engine Options: MongoDB defaults to WiredTiger. You can specify 
 storage engine settings in the MongoDB configuration file /etc/mongod.conf:
@@ -272,6 +255,10 @@ Authentication: Add the following to /etc/mongod.conf to enable authentication:
 
 security:
   authorization: "enabled"
+
+<img width="152" alt="ca" src="https://github.com/user-attachments/assets/bdbdacac-01fb-481a-89d1-dc24fb249ce6">
+
+  
 Restart MongoDB for changes to take effect:
 
 sudo systemctl restart mongod
@@ -285,24 +272,9 @@ db.createUser({
   roles: [{ role: "userAdminAnyDatabase", db: "admin" }]
 })
 
-# 9. Set Up Replication (Optional)
-Initialize a replica set (requires multiple servers; here is an outline):
+<img width="322" alt="re" src="https://github.com/user-attachments/assets/d8086ae6-3e19-4438-97d3-9e2237faed2a">
 
-Start each MongoDB instance with replica set configuration:
-
-mongod --replSet rs0 --port 27017 --dbpath /var/lib/mongo --bind_ip_all
-Connect to one of the instances and initiate the replica set:
-
-
-use admin
-rs.initiate({
-  _id: "rs0",
-  members: [
-    { _id: 0, host: "localhost:27017" }
-  ]
-})
-
-# 10. Test the NoSQL Database
+# 9. Test the NoSQL Database
 
 Insert data:
 
@@ -312,13 +284,21 @@ Query data:
 
 db.employees.find()
 
+<img width="459" alt="fw" src="https://github.com/user-attachments/assets/4de30356-6454-45b7-8495-d8bb1f249fb0">
+
 Update data:
 
 db.employees.updateOne({ name: "Bob" }, { $set: { position: "Senior Manager" } })
 
+<img width="456" alt="c3" src="https://github.com/user-attachments/assets/6ad0951c-2b75-49bd-abf0-fe474e60d255">
+
+
 Delete data:
 
 db.employees.deleteOne({ name: "Bob" })
+
+<img width="228" alt="xz" src="https://github.com/user-attachments/assets/c78c2a3e-b9d2-46b7-a066-b7d4d977092f">
+
 
 # Completion Criteria
 
