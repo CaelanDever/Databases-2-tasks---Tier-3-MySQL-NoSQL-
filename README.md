@@ -15,11 +15,16 @@ Install the MySQL repository: You need to set up the MySQL repository if it's no
 
 sudo yum install https://dev.mysql.com/get/mysql80-community-release-el7-
 
+<img width="458" alt="543" src="https://github.com/user-attachments/assets/1ddddf09-67c9-414f-8201-f0b2389404c7">
+
 # 3.noarch.rpm
 
 Install MySQL server:
 
 sudo yum install mysql-server
+
+<img width="449" alt="5432" src="https://github.com/user-attachments/assets/79424c52-95c5-4a76-ae28-e0a0b0be55e8">
+
 
 Start the MySQL service:
 
@@ -28,6 +33,9 @@ sudo systemctl start mysqld
 Enable MySQL to start on boot:
 
 sudo systemctl enable mysqld
+
+<img width="458" alt="ew" src="https://github.com/user-attachments/assets/201bdc4c-4cb7-4c23-a431-9cc9af7d66e6">
+
 
 # 2. Secure the MySQL Installation
 
@@ -38,6 +46,9 @@ sudo mysql_secure_installation
 Follow the prompts to set the root password, remove anonymous users, 
 disable remote root login, and remove the test database.
 
+<img width="432" alt="432" src="https://github.com/user-attachments/assets/f81dd958-eedb-433c-a3e5-a69ddde37b08">
+
+
 # 3. Log in to MySQL as the Root User
 
 Log in to the MySQL command-line client:
@@ -45,6 +56,9 @@ Log in to the MySQL command-line client:
 mysql -u root -p
 
 Enter the root password you set during the secure installation process.
+
+<img width="451" alt="435" src="https://github.com/user-attachments/assets/df1847f2-d090-4d27-ab07-e02bd573f407">
+
 
 # 4. Create a New Database
 
@@ -80,12 +94,18 @@ CREATE TABLE employee_departments (
     PRIMARY KEY (employee_id, department_id)
 );
 
+<img width="456" alt="234" src="https://github.com/user-attachments/assets/7219658d-31ed-4a75-ac3b-a723b428f9c3">
+
+
 # 6. Configure Additional Parameters
 
 Configure storage engine (InnoDB is recommended): You can set the default storage engine in the MySQL configuration file (/etc/my.cnf).
 
 [mysqld]
 default-storage-engine=innodb
+
+<img width="342" alt="654" src="https://github.com/user-attachments/assets/16be017a-fc2c-4d3a-be1d-a1b938c75048">
+
 
 Indexing example:
 
@@ -97,6 +117,9 @@ Logging options: You can adjust logging settings in /etc/my.cnf. For example:
 general_log = 1
 general_log_file = /var/log/mysql/mysql.log
 
+<img width="323" alt="65" src="https://github.com/user-attachments/assets/8cb8c920-c12b-42f5-aa86-eb671c06f851">
+
+
 # 7. Grant Privileges
 
 Create a new user and grant privileges:
@@ -104,6 +127,9 @@ Create a new user and grant privileges:
 CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON my_database.* TO 'my_user'@'localhost';
 FLUSH PRIVILEGES;
+
+<img width="425" alt="df" src="https://github.com/user-attachments/assets/323e0335-d33a-40e0-ac22-86a722bea01e">
+
 
 # 8. Test the SQL Database
 
@@ -117,6 +143,9 @@ SELECT * FROM employees;
 Update data:
 
 UPDATE employees SET position = 'Senior Developer' WHERE name = 'Alice';
+
+<img width="457" alt="da" src="https://github.com/user-attachments/assets/f2b26db7-07e9-41bb-9570-51425ab4337d">
+
 
 Delete data:
 
